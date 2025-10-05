@@ -4,6 +4,10 @@ bool start = true;
 int money = 100;
 int show_up = 0;
 
+int bigBurgerCount = 0;
+int fishBurgerCount = 0;
+int krabbyPattyCount = 0;
+
 Console.WriteLine("Welcome to Burger (Yes, its the restaurant's name)");
 Console.WriteLine();
 Console.WriteLine("Would you like to look through our menu?");
@@ -28,7 +32,6 @@ while (start)
 
     show_up++;
 
-    
     if (show_up == 1)
     {
         Console.WriteLine("So do you want the Big burger?");
@@ -36,8 +39,7 @@ while (start)
         string okayyyy1 = Console.ReadLine().Trim().ToUpper();
         if (okayyyy1 == "YES")
         {
-            Console.WriteLine("How many of them");
-
+            Console.WriteLine("How many of them?");
             opt1 = Console.ReadLine().Trim().ToUpper();
             bool Success = int.TryParse(opt1, out int opt1_1);
 
@@ -52,6 +54,7 @@ while (start)
                 else
                 {
                     money -= sum1;
+                    bigBurgerCount += opt1_1;
                     Console.WriteLine($"Okayy so {opt1_1} big burgers, that will be {sum1} SEK");
                     Console.WriteLine($"You got {money} left");
                 }
@@ -71,7 +74,6 @@ while (start)
         }
     }
 
-
     else if (show_up == 2)
     {
         Console.WriteLine("Okayyy... emmmm....");
@@ -80,8 +82,7 @@ while (start)
         string opt2 = Console.ReadLine().Trim().ToUpper();
         if (opt2 == "YES")
         {
-            Console.WriteLine("Great, how many of them do you want");
-
+            Console.WriteLine("Great, how many of them do you want?");
             string op1 = Console.ReadLine().Trim().ToUpper();
             bool Success1 = int.TryParse(op1, out int op1_1);
             if (Success1)
@@ -95,6 +96,7 @@ while (start)
                 else
                 {
                     money -= sum2;
+                    fishBurgerCount += op1_1;
                     Console.WriteLine($"Okayy so {op1_1} fish burgers, that will be {sum2} SEK");
                     Console.WriteLine($"You got {money} left");
                 }
@@ -122,8 +124,7 @@ while (start)
         string opt3 = Console.ReadLine().Trim().ToUpper();
         if (opt3 == "YES")
         {
-            Console.WriteLine("Great, how many of them do you want");
-
+            Console.WriteLine("Great, how many of them do you want?");
             string op3 = Console.ReadLine().Trim().ToUpper();
             bool Success4 = int.TryParse(op3, out int op3_3);
             if (Success4)
@@ -137,9 +138,10 @@ while (start)
                 else
                 {
                     money -= sum21;
+                    krabbyPattyCount += op3_3;
                     Console.WriteLine($"Okayy so {op3_3} krabby patties, that will be {sum21} SEK");
                     Console.WriteLine($"You got {money} left");
-                    break;
+                    break; 
                 }
             }
             else
@@ -161,11 +163,20 @@ while (start)
     {
         Console.WriteLine("Well so you came here to waste my time");
         Console.WriteLine("THE GET THE HELL OUT");
-        break;
+        break; 
     }
     else
     {
         Console.WriteLine("That is not an answer");
     }
 }
+
+Console.WriteLine();
+Console.WriteLine("Order complete! Here is what you got:");
+Console.WriteLine($"{bigBurgerCount} Big Burgers");
+Console.WriteLine($"{fishBurgerCount} Fish Burgers");
+Console.WriteLine($"{krabbyPattyCount} Krabby Patties");
+Console.WriteLine($"Money left: {money} SEK");
+Console.WriteLine("Thanks for visiting Burger!");
+
 Console.ReadLine();
